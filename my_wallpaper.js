@@ -10,7 +10,7 @@ let cardNums;
 function setup_wallpaper(pWallpaper) {
   //DEVELOP_GLYPH
   //GRID_WALLPAPER
-  pWallpaper.output_mode(DEVELOP_GLYPH);
+  pWallpaper.output_mode(GRID_WALLPAPER);
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
@@ -28,7 +28,7 @@ function wallpaper_background() {
 }
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
-  createCard(1, generateRandom(720) * (-generateRandom(3)));
+  createCard(generateRandom(4), generateRandom(720) * (-generateRandom(3)));
   stroke(0);
   createDice(generateRandom(6), generateRandom(720), 0, 250);
   
@@ -272,18 +272,6 @@ function cardNum(randCardNum, suit){
       suit();
     pop();
   }
-  else if (randCardNum == 10){
-    text("J", 34, 32)
-  } 
-  else if (randCardNum == 11){
-    text("Q", 34, 32)
-  }
-  else if (randCardNum == 12){
-    text("K", 34, 32)
-  } 
-  else if (randCardNum == 13){
-    text("A", 34, 32)
-  }
 
   
 
@@ -306,11 +294,16 @@ function createCard(suit, rot){
     pop()
     rect(30, 15, 80, 100, 5);
     push()
-      translate(20, 5);
-      spade();
+      translate(27, 10);
+      push()
+        scale(0.6)
+        spade();
+      pop()
+      cardNum(generateRandom(9)+1, spade);
     pop();
     push();
-      translate(70, 75);
+      translate(82, 87);
+      scale(0.6)
       spade();
     pop();
 
@@ -334,7 +327,7 @@ function createCard(suit, rot){
         scale(0.6)
         heart();
       pop()
-      cardNum(9, heart);
+      cardNum(generateRandom(9)+1, heart);
     pop();
     push();
       translate(82, 87);
@@ -355,12 +348,17 @@ function createCard(suit, rot){
       rect(30, 15, 80, 100, 5);
     pop()
       rect(30, 15, 80, 100, 5);
-    push()
-      translate(20, 10);
-      diamond();
+      push()
+      translate(27, 10);
+      push()
+        scale(0.6)
+        diamond();
+      pop()
+      cardNum(generateRandom(9)+1, diamond);
     pop();
     push();
-      translate(70, 73);
+      translate(82, 87);
+      scale(0.6)
       diamond();
     pop();
   }
@@ -378,11 +376,16 @@ function createCard(suit, rot){
     pop()
     rect(30, 15, 80, 100, 5);
     push()
-      translate(20, 10);
-      club();
+      translate(27, 10);
+      push()
+        scale(0.6)
+        club();
+      pop()
+      cardNum(generateRandom(9)+1, club);
     pop();
     push();
-      translate(70, 80);
+      translate(82, 87);
+      scale(0.6)
       club();
     pop();
   }
