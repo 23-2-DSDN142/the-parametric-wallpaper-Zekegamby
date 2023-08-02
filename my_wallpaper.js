@@ -1,66 +1,390 @@
+
 //your parameter variables go here!
 let rect_width  = 40;
 let rect_height = 40;
+let rect_round = 5;
+let diceRot;
+let newRand = noise(100);
+let cardNums;
 
 function setup_wallpaper(pWallpaper) {
   //DEVELOP_GLYPH
   //GRID_WALLPAPER
-  pWallpaper.output_mode(GRID_WALLPAPER);
+  pWallpaper.output_mode(DEVELOP_GLYPH);
   pWallpaper.resolution(FIT_TO_SCREEN);
   pWallpaper.show_guide(false); //set this to false when you're ready to print
 
   //Grid settings
+  pWallpaper.grid_settings.cell_width  = 200;
+  pWallpaper.grid_settings.cell_height = 200;
+  pWallpaper.grid_settings.row_offset  = 50;
   pWallpaper.grid_settings.cell_width  = 80;
   pWallpaper.grid_settings.cell_height = 80;
   pWallpaper.grid_settings.row_offset  = 0;
 }
 
 function wallpaper_background() {
-  background(150 + generateRandom(100), 150 + generateRandom(100), 150 + generateRandom(100)); //light honeydew green colour
+  background(150, 50, 50); 
 }
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
-  createCard(generateRandom(4));
+  createCard(1, generateRandom(720) * (-generateRandom(3)));
   stroke(0);
-  translate(-70, -70)
-  createDice(generateRandom(6));
+  createDice(generateRandom(6), generateRandom(720), 0, 250);
+  
 
   
 }
+function cardNum(randCardNum, suit){
+  if (randCardNum == 1){
+    text(2, 34, 32)
+    push();
+      translate(18, 55)
+      suit ();
+    pop();
+    push();
+      translate(18, 0);
+      suit();
+    pop();
+  }
+  else if (randCardNum == 2){
+    text(3, 34, 32)
+    push();
+      translate(18, 55)
+      suit ();
+    pop();
+    push();
+      translate(18, 0);
+      suit();
+    pop();
+    push();
+      translate(18, 27);
+      suit();
+    pop();
+  } 
+  else if (randCardNum == 3){
+    push();
+      translate(5, 55)
+      suit ();
+    pop();
+    push();
+      translate(5, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 55)
+      suit ();
+    pop();
+  }
+  else if (randCardNum == 4){
+    push();
+      translate(5, 55)
+      suit ();
+    pop();
+    push();
+      translate(5, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 55)
+      suit ();
+    pop();
+    push();
+      translate(18, 27);
+      suit();
+    pop();
+  } 
+  else if (randCardNum == 5){
+    push();
+      translate(5, 55)
+      suit ();
+    pop();
+    push();
+      translate(5, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 55)
+      suit ();
+    pop();
+    push();
+      translate(35, 27);
+      suit();
+    pop();
+    push();
+      translate(5, 27);
+      suit();
+    pop();
+  }
+  else if (randCardNum == 6){
+    push();
+      translate(5, 55)
+      suit ();
+    pop();
+    push();
+      translate(5, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 55)
+      suit ();
+    pop();
+    push();
+      translate(35, 27);
+      suit();
+    pop();
+    push();
+      translate(5, 27);
+      suit();
+    pop();
+    push();
+      translate(20, 27);
+      suit();
+    pop();
+  } 
+  else if (randCardNum == 7){
+    push();
+      translate(5, 55)
+      suit ();
+    pop();
+    push();
+      translate(5, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 55)
+      suit ();
+    pop();
+    push();
+      translate(35, 27);
+      suit();
+    pop();
+    push();
+      translate(5, 27);
+      suit();
+    pop();
+    push();
+      translate(20, 13);
+      suit();
+    pop();
+    push();
+      translate(20, 40);
+      suit();
+    pop();
+  }
+  else if (randCardNum == 8){
+    push();
+      translate(5, 55)
+      suit ();
+    pop();
+    push();
+      translate(5, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 55)
+      suit ();
+    pop();
+    push();
+      translate(35, 37);
+      suit();
+    pop();
+    push();
+      translate(5, 18);
+      suit();
+    pop();
+    push();
+      translate(35, 18);
+      suit();
+    pop();
+    push();
+      translate(5, 37);
+      suit();
+    pop();
+    push();
+      translate(18, 27);
+      suit();
+    pop();
+  } 
+  else if (randCardNum == 9){
+    push();
+      translate(5, 55)
+      suit ();
+    pop();
+    push();
+      translate(5, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 0);
+      suit();
+    pop();
+    push();
+      translate(35, 55)
+      suit ();
+    pop();
+    push();
+      translate(35, 37);
+      suit();
+    pop();
+    push();
+      translate(5, 18);
+      suit();
+    pop();
+    push();
+      translate(35, 18);
+      suit();
+    pop();
+    push();
+      translate(5, 37);
+      suit();
+    pop();
+    push();
+      translate(20, 10);
+      suit();
+    pop();
+    push();
+      translate(20, 45);
+      suit();
+    pop();
+  }
+  else if (randCardNum == 10){
+    text("J", 34, 32)
+  } 
+  else if (randCardNum == 11){
+    text("Q", 34, 32)
+  }
+  else if (randCardNum == 12){
+    text("K", 34, 32)
+  } 
+  else if (randCardNum == 13){
+    text("A", 34, 32)
+  }
 
-function createCard(suit){
+  
+
+}
+
+//creating the suits
+function createCard(suit, rot){
+  //spades
   if(suit == 0){
-    fill(150 + generateRandom(100), 150 + generateRandom(100), 150 + generateRandom(100));
-    rect(30 + (generateRandom(5)), 15 + (generateRandom(5)), 80, 100, 5);
-    translate(23 + generateRandom(5), 5 + generateRandom(5) );
-    spade();
-    translate(50 + generateRandom(5), 65 + generateRandom(5) );
-    spade();
+    rotate(rot)
+    strokeWeight(1.5);
+    fill(150);
+    push()
+    //shadows
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(30, 15, 80, 100, 5);
+    pop()
+    rect(30, 15, 80, 100, 5);
+    push()
+      translate(20, 5);
+      spade();
+    pop();
+    push();
+      translate(70, 75);
+      spade();
+    pop();
 
   }
+  //hearts
   else if (suit == 1){
-    fill(150 + generateRandom(100), 150 + generateRandom(100), 150 + generateRandom(100));
-    rect(30 + (generateRandom(5)), 15 + (generateRandom(5)), 80, 100, 5);
-    translate(23 + generateRandom(5), 5 + generateRandom(5) );
-    heart();
-    translate(50 + generateRandom(5), 65 + generateRandom(5) );
-    heart();
+    rotate(rot)
+    strokeWeight(1.5);
+    fill(150);
+    push()
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(30, 15, 80, 100, 5);
+    pop()
+    rect(30, 15, 80, 100, 5);
+    push()
+      translate(27, 10);
+      push()
+        scale(0.6)
+        heart();
+      pop()
+      cardNum(9, heart);
+    pop();
+    push();
+      translate(82, 87);
+      scale(0.6)
+      heart();
+    pop();
   }
+  //diamonds
   else if (suit == 2){
-    fill(150 + generateRandom(100), 150 + generateRandom(100), 150 + generateRandom(100));
-    rect(30 + (generateRandom(5)), 15 + (generateRandom(5)), 80, 100, 5);
-    translate(23 + generateRandom(5), 5 + generateRandom(5) );
-    diamond();
-    translate(50 + generateRandom(5), 65 + generateRandom(5) );
-    diamond();
+    rotate(rot)
+    strokeWeight(1.5);
+    fill(150);
+    push()
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(30, 15, 80, 100, 5);
+    pop()
+      rect(30, 15, 80, 100, 5);
+    push()
+      translate(20, 10);
+      diamond();
+    pop();
+    push();
+      translate(70, 73);
+      diamond();
+    pop();
   }
+  //clubs
   else if (suit == 3){
-    fill(150 + generateRandom(100), 150 + generateRandom(100), 150 + generateRandom(100));
-    rect(30 + (generateRandom(5)), 15 + (generateRandom(5)), 80, 100, 5);
-    translate(23 + generateRandom(5), 5 + generateRandom(5) );
-    club();
-    translate(50 + generateRandom(5), 65 + generateRandom(5) );
-    club();
+    rotate(rot)
+    strokeWeight(1.5);
+    fill(150);
+    push()
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(30, 15, 80, 100, 5);
+    pop()
+    rect(30, 15, 80, 100, 5);
+    push()
+      translate(20, 10);
+      club();
+    pop();
+    push();
+      translate(70, 80);
+      club();
+    pop();
   }
   
 }
@@ -106,72 +430,105 @@ function club(){
 
 
 
-function createDice(generateRandom2){
+function createDice(generateRandom2, diceRot, color, colorAgain){
   if(generateRandom2 == 0){
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
-    rect(40 ,40, rect_width, rect_height);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
+    rotate(diceRot);
+    fill(colorAgain)
+    push()
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(40 ,40, rect_width, rect_height, rect_round);
+    pop()
+    rect(40 ,40, rect_width, rect_height, rect_round);
+    fill(color);
     ellipse(60, 60, 10, 10);
   }
   else if (generateRandom2 == 1){
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
-    rect(40 ,40, rect_width, rect_height);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
+    rotate(diceRot);
+    fill(colorAgain)
+    push()
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(40 ,40, rect_width, rect_height, rect_round);
+    pop()
+    rect(40 ,40, rect_width, rect_height, rect_round);
+    fill(color);
     ellipse(50, 50, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(70, 70, 10, 10);
 
   }
   else if (generateRandom2 == 2){
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
-    rect(40 ,40, rect_width, rect_height);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
+    rotate(diceRot);
+    fill(colorAgain)
+    push()
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(40 ,40, rect_width, rect_height, rect_round);
+    pop()
+    rect(40 ,40, rect_width, rect_height, rect_round);
+    fill(color);
     ellipse(50, 50, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(70, 70, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(60, 60, 10, 10);
   }
   else if (generateRandom2 == 3){
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
-    rect(40 ,40, rect_width, rect_height);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
+    rotate(diceRot);
+    fill(colorAgain)
+    push()
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(40 ,40, rect_width, rect_height, rect_round);
+    pop()
+    rect(40 ,40, rect_width, rect_height, rect_round);
+    fill(color);
     ellipse(50, 50, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(50, 70, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(70, 70, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(70, 50, 10, 10);
   }
   else if (generateRandom2 == 4){
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
-    rect(40 ,40, rect_width, rect_height);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
+    rotate(diceRot);
+    fill(colorAgain)
+    push()
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(40 ,40, rect_width, rect_height, rect_round);
+    pop()
+    rect(40 ,40, rect_width, rect_height, rect_round);
+    fill(color);
     ellipse(50, 50, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(50, 70, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(70, 70, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(70, 50, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(60, 60, 10, 10);
   }
   else if (generateRandom2 == 5){
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
-    rect(40 ,40, rect_width, rect_height);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
+    rotate(diceRot);
+    fill(colorAgain)
+    push()
+      drawingContext.shadowOffsetX = 5;
+      drawingContext.shadowOffsetY = -5;
+      drawingContext.shadowBlur = 10;
+      drawingContext.shadowColor = 'black';
+      rect(40 ,40, rect_width, rect_height, rect_round);
+    pop()
+    rect(40 ,40, rect_width, rect_height, rect_round);
+    fill(color);
     ellipse(50, 47, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(50, 73, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(70, 73, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(70, 47, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(50, 60, 10, 10);
-    fill(200 + generateRandom(50), 200 + generateRandom(50), 200 + generateRandom(50))
     ellipse(70, 60, 10, 10);
   }
 }
