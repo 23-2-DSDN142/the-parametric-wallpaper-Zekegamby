@@ -4,8 +4,12 @@ let rect_width  = 40;
 let rect_height = 40;
 let rect_round = 5;
 let diceRot;
-let newRand = noise(100);
+//let newRand = noise(100);
 let cardNums;
+let cardRed = generateRandom(100) + 150;
+let cardBlue = generateRandom(100) + 150;
+let cardGreen = generateRandom(100) + 150;
+
 
 function setup_wallpaper(pWallpaper) {
   //DEVELOP_GLYPH
@@ -28,7 +32,8 @@ function wallpaper_background() {
 }
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
-  createCard(generateRandom(4), generateRandom(720) * (-generateRandom(3)));
+  let cardColor = color(100, 50, 50);
+  createCard(generateRandom(4), generateRandom(720) * (-generateRandom(3)), cardColor);
   stroke(0);
   createDice(generateRandom(6), generateRandom(720), 0, 250);
   
@@ -278,12 +283,12 @@ function cardNum(randCardNum, suit){
 }
 
 //creating the suits
-function createCard(suit, rot){
+function createCard(suit, rot, cardColor){
   //spades
   if(suit == 0){
     rotate(rot)
     strokeWeight(1.5);
-    fill(150);
+    fill(cardColor);
     push()
     //shadows
       drawingContext.shadowOffsetX = 5;
@@ -312,7 +317,7 @@ function createCard(suit, rot){
   else if (suit == 1){
     rotate(rot)
     strokeWeight(1.5);
-    fill(150);
+    fill(cardRed, cardGreen, cardBlue);
     push()
       drawingContext.shadowOffsetX = 5;
       drawingContext.shadowOffsetY = -5;
@@ -339,7 +344,7 @@ function createCard(suit, rot){
   else if (suit == 2){
     rotate(rot)
     strokeWeight(1.5);
-    fill(150);
+    fill(cardRed, cardGreen, cardBlue);
     push()
       drawingContext.shadowOffsetX = 5;
       drawingContext.shadowOffsetY = -5;
@@ -366,7 +371,7 @@ function createCard(suit, rot){
   else if (suit == 3){
     rotate(rot)
     strokeWeight(1.5);
-    fill(150);
+    fill(cardRed, cardGreen, cardBlue);
     push()
       drawingContext.shadowOffsetX = 5;
       drawingContext.shadowOffsetY = -5;
@@ -433,7 +438,7 @@ function club(){
 
 
 
-function createDice(generateRandom2, diceRot, color, colorAgain){
+function createDice(generateRandom2, diceRot, color2, colorAgain){
   if(generateRandom2 == 0){
     rotate(diceRot);
     fill(colorAgain)
@@ -445,7 +450,7 @@ function createDice(generateRandom2, diceRot, color, colorAgain){
       rect(40 ,40, rect_width, rect_height, rect_round);
     pop()
     rect(40 ,40, rect_width, rect_height, rect_round);
-    fill(color);
+    fill(color2);
     ellipse(60, 60, 10, 10);
   }
   else if (generateRandom2 == 1){
@@ -459,7 +464,7 @@ function createDice(generateRandom2, diceRot, color, colorAgain){
       rect(40 ,40, rect_width, rect_height, rect_round);
     pop()
     rect(40 ,40, rect_width, rect_height, rect_round);
-    fill(color);
+    fill(color2);
     ellipse(50, 50, 10, 10);
     ellipse(70, 70, 10, 10);
 
@@ -475,7 +480,7 @@ function createDice(generateRandom2, diceRot, color, colorAgain){
       rect(40 ,40, rect_width, rect_height, rect_round);
     pop()
     rect(40 ,40, rect_width, rect_height, rect_round);
-    fill(color);
+    fill(color2);
     ellipse(50, 50, 10, 10);
     ellipse(70, 70, 10, 10);
     ellipse(60, 60, 10, 10);
@@ -491,7 +496,7 @@ function createDice(generateRandom2, diceRot, color, colorAgain){
       rect(40 ,40, rect_width, rect_height, rect_round);
     pop()
     rect(40 ,40, rect_width, rect_height, rect_round);
-    fill(color);
+    fill(color2);
     ellipse(50, 50, 10, 10);
     ellipse(50, 70, 10, 10);
     ellipse(70, 70, 10, 10);
@@ -508,7 +513,7 @@ function createDice(generateRandom2, diceRot, color, colorAgain){
       rect(40 ,40, rect_width, rect_height, rect_round);
     pop()
     rect(40 ,40, rect_width, rect_height, rect_round);
-    fill(color);
+    fill(color2);
     ellipse(50, 50, 10, 10);
     ellipse(50, 70, 10, 10);
     ellipse(70, 70, 10, 10);
@@ -526,7 +531,7 @@ function createDice(generateRandom2, diceRot, color, colorAgain){
       rect(40 ,40, rect_width, rect_height, rect_round);
     pop()
     rect(40 ,40, rect_width, rect_height, rect_round);
-    fill(color);
+    fill(color2);
     ellipse(50, 47, 10, 10);
     ellipse(50, 73, 10, 10);
     ellipse(70, 73, 10, 10);
