@@ -6,10 +6,7 @@ let rect_round = 5;
 let diceRot;
 //let newRand = noise(100);
 let cardNums;
-let cardRed = generateRandom(100) + 150;
-let cardBlue = generateRandom(100) + 150;
-let cardGreen = generateRandom(100) + 150;
-
+let cardSuits = 0;
 
 function setup_wallpaper(pWallpaper) {
   //DEVELOP_GLYPH
@@ -32,10 +29,17 @@ function wallpaper_background() {
 }
 
 function my_symbol() { // do not rename this function. Treat this similarly to a Draw function
-  let cardColor = color(100, 50, 50);
-  createCard(generateRandom(4), generateRandom(720) * (-generateRandom(3)), cardColor);
+  //changes the color of the card
+  let cardColor = color(generateRandom(100));
+  let cardRot = 45;
+  let diceRot = generateRandom(40);
+  let dicePos = generateRandom(0);
+  createCard(generateRandom(4), cardRot, cardColor);
   stroke(0);
-  createDice(generateRandom(6), generateRandom(720), 0, 250);
+  push()
+  translate(dicePos, dicePos);
+  createDice(generateRandom(6), diceRot, 0, 250);
+  pop()
   
 
   
@@ -317,7 +321,7 @@ function createCard(suit, rot, cardColor){
   else if (suit == 1){
     rotate(rot)
     strokeWeight(1.5);
-    fill(cardRed, cardGreen, cardBlue);
+    fill(cardColor);
     push()
       drawingContext.shadowOffsetX = 5;
       drawingContext.shadowOffsetY = -5;
@@ -344,7 +348,7 @@ function createCard(suit, rot, cardColor){
   else if (suit == 2){
     rotate(rot)
     strokeWeight(1.5);
-    fill(cardRed, cardGreen, cardBlue);
+    fill(cardColor);
     push()
       drawingContext.shadowOffsetX = 5;
       drawingContext.shadowOffsetY = -5;
@@ -371,7 +375,7 @@ function createCard(suit, rot, cardColor){
   else if (suit == 3){
     rotate(rot)
     strokeWeight(1.5);
-    fill(cardRed, cardGreen, cardBlue);
+    fill(cardColor);
     push()
       drawingContext.shadowOffsetX = 5;
       drawingContext.shadowOffsetY = -5;
